@@ -26,7 +26,7 @@ Ola Prof. {{user.first_name}} {{user.last_name}}
         {% for turma in turmas_professor %}
         <div class="content-table">
             <p>{{ turma.id }}</p>
-            <p>{{ turma.Nome_Turma }}</p>
+            <p id="nome_turma">{{ turma.nome_turma }}</p>
             <div id="btn-action">
                 <a id="visualizar" href="{% url 'area_turma' id=turma.id %}" >Visualizar</a>
                 <a id="excluir" href="{% url 'confirmar' id_turma=turma.id %}">excluir</a>

@@ -7,7 +7,7 @@
 <!-- conteudo da pagina -->
 {% block content %}
 <div id="container">
-    <form id="content" action="{% url 'cadastrar_atividade' id_usuario=user.id id_turma=turma.id %}" method="POST">
+    <form id="content" action="{% url 'cadastro_atividades' id_professor=user.id id_turma=turma.id %}" method="POST">
         {% csrf_token %}
         <p id="txt-title">Criar Atividade</p>
         <input type="text" name="nome_atividade" placeholder="Nome" class="input">

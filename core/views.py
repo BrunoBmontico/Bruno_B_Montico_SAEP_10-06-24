@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect                    # REQUESTS PADROES DJANGO
 from django.http import HttpResponse
 from django.contrib.auth import authenticate, login, logout                         # REQUERIMENTO DE LOGIN
+from django.db.models import ProtectedError
 from core.models import *
 
 
@@ -59,11 +60,11 @@ def cadastro_turma(request, id):
     if request.method == 'GET':
         return render(request, 'core/cadastro_turma.html')
     else:
-        nome_Turma = request.POST.get('nome_turma')
+        nome_turma = request.POST.get('nome_turma')
 
-        if nome_Turma != '':
+        if nome_turma != '':
             turma = Turma.objects.create(
-                nome_turma = nome_Turma,
+                nome_turma = nome_turma,
                 id_professor = usuario,
                 nome_professor = usuario.first_name,
             )
@@ -88,7 +89,7 @@ def area_turma(request, id):
 
 #cadastro Atividades
 def cadastro_atividades(request, id_professor, id_turma):
-    usuario = get_object_or_404(User, pk=id_turma)
+    usuario = get_object_or_404(User, pk=id_professor)
     turma = get_object_or_404(Turma, pk=id_turma)
 
     context = {
@@ -97,16 +98,16 @@ def cadastro_atividades(request, id_professor, id_turma):
     }
 
     if request.method == 'GET':
-        return render(request, 'core/cadastro_atividades.html', context)
+        return render(request, 'core/cadastro_atividade.html', context)
     else:
-        nome_atividade = request.POST.get('Nome_Atividade')
+        nome_atividade = request.POST.get('nome_atividade')
 
         atividade = Atividade.objects.create(
             nome_atividade = nome_atividade,
             id_professor = usuario,
             nome_professor = usuario.first_name,
             id_turma = turma,
-            nome_turma = turma.Nome_Turma,
+            nome_turma = turma.nome_turma,
         )
         atividade.save()
         return redirect(f'/tela_turma/{turma.id}')
@@ -124,12 +125,12 @@ def excluir_turma(request, id_turma):
     turma = get_object_or_404(Turma, pk=id_turma)
     atividades = Atividade.objects.all()
 
-    for atividade in atividades:
-        if atividade.id_lista != turma:
+    try:
+        for atividade in atividades:
             turma.delete()
             return redirect(f'/tela_professor/{request.user.id}')
-        else:
-            return HttpResponse('Essa turma tem atividades não e possivel excluir')
+    except ProtectedError:
+        return HttpResponse('Essa turma tem atividades não e possivel excluir')
 
 def confirmar(request, id_turma):
     turma = get_object_or_404(Turma, pk=id_turma)

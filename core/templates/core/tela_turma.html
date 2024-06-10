@@ -8,7 +8,7 @@ Turma {{ turma.Nome_Turma }}
 
 <!-- texto de apresentação no header -->
 {% block txt_header %}
-Turma {{ turma.Nome_Turma }}
+{{ turma.Nome_Turma }}
 {% endblock txt_header %}
 
 <!-- nome do professor que fez a turma -->
@@ -18,7 +18,7 @@ Turma do Prof. {{user.first_name}} {{user.last_name}}
 
 <!-- botões do header -->
 {% block btn %}
-<a class="btn" href="{% url 'cadastro_atividades' id_usuario=user.id id_turma=turma.id %}">Criar Atividade</a>
+<a class="btn" href="{% url 'cadastro_atividades' id_professor=user.id id_turma=turma.id %}">Criar Atividade</a>
 {% endblock btn %}
 
 {% block content %}
@@ -30,10 +30,10 @@ Turma do Prof. {{user.first_name}} {{user.last_name}}
             <p>Nome da Atividade</p>
         </header>
         {% for atividade in atividades_turma %}
-        <div class="content-table">
-            <p>{{ atividade.id }}</p>
-            <a>{{ atividade.Nome_item }}</a>
-        </div>
+            <div class="content-table">
+                <p>{{ atividade.id }}</p>
+                <a>{{ atividade.nome_atividade }}</a>
+            </div>
         {% endfor %}
     </div>
 
