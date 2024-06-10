@@ -1,0 +1,41 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+<!-- nome da pagina -->
+{% block nome_pag %}
+Turma {{ turma.Nome_Turma }}
+{% endblock nome_pag %}
+
+<!-- texto de apresentação no header -->
+{% block txt_header %}
+Turma {{ turma.Nome_Turma }}
+{% endblock txt_header %}
+
+<!-- nome do professor que fez a turma -->
+{% block txt-header-name %}
+Turma do Prof. {{user.first_name}} {{user.last_name}}
+{% txt-header-name %}
+
+<!-- botões do header -->
+{% block btn %}
+<a class="btn" href="{% url 'cadastrar_atividade' id_usuario=user.id id_turma=turma.id %}">Criar Atividade</a>
+{% endblock btn %}
+
+{% block content %}
+<div id="professor-conteiner">
+
+    <div id="content_page">
+        <header id="header-table">
+            <p>ID</p>
+            <p>Nome da Atividade</p>
+        </header>
+        {% for atividade in atividades_turma %}
+        <div class="content-table">
+            <p>{{ atividade.id }}</p>
+            <a>{{ atividade.Nome_item }}</a>
+        </div>
+        {% endfor %}
+    </div>
+
+</div>
+{% endblock content %}

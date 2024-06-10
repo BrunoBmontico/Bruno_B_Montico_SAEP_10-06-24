@@ -1,0 +1,20 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+<!-- nome da pagina -->
+{% block nome_pag %}login{% endblock nome_pag %}
+
+<!-- conteudo da pagina -->
+{% block content %}
+<div id="container">
+    <form id="content" action="{% url 'login_professor' %}" method="post">
+        {% csrf_token %}
+        <p id="txt-title">Login Professor</p>
+        <input type="email" name="email_professor" placeholder="E-mail" class="input">
+        <input type="password" name="senha_professor" placeholder="Senha" class="input">
+        <button type="submit" id="submit">Logar</button>
+
+        <a id="link" href="/Cadastro/">Ainda não tem cadastro?</a>
+    </div>
+</div>
+{% endblock content %}

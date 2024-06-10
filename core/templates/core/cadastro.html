@@ -1,0 +1,22 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+<!-- nome da pagina -->
+{% block nome_pag %}cadastro{% endblock nome_pag %}
+
+<!-- conteudo da pagina -->
+{% block content %}
+<div id="container">
+    <form id="content" action="{% url 'cadastro' %}" method="POST">
+        {% csrf_token %}
+        <p id="txt-title">Cadastro</p>
+        <input type="text" name="nome_professor" placeholder="Nome" class="input">
+        <input type="text" name="sobrenome_professor" placeholder="Sobrenome" class="input">
+        <input type="email" name="email_professor" placeholder="E-mail" class="input">
+        <input type="password" name="senha_professor" placeholder="Senha" class="input">
+
+
+        <button type="submit" id="submit">Cadastrar</button>
+    </form>
+</div>
+{% endblock content %}

@@ -1,0 +1,18 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+<!-- nome da pagina -->
+{% block nome_pag %}confirmar exclusão da turma?{% endblock nome_pag %}
+
+<!-- conteudo da pagina -->
+{% block content %}
+<div id="container">
+    <div id="content">
+        <p>Deseja excluir esta turma?</p>
+        <a href="{% url 'excluir_turma' id_turma=turma.id %}">Excluir</a>
+        <a href="{% url 'area_professor' id=user.id %}">Cancelar</a>
+    </div>
+
+</div>
+
+{% endblock content %}

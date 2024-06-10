@@ -1,0 +1,30 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- nome da pagina -->
+    <title>{% block nome_pag %}{% endblock nome_pag %}</title>
+</head>
+<body>
+
+    <header id="header-base">
+        
+        <!-- texto de apresentação no header -->
+        <p id="txt-header">{% block txt_header %}{% endblock txt_header %}</p>
+        <p id="txt-header-name">{% block txt-header-name %}{% endblock txt-header-name %}</p>
+
+        <!-- botões do header -->
+        <div id="btn-header">
+            {% block btn %}{% endblock btn %}
+        </div>
+    </header>
+    
+    <!-- conteudo da pagina -->
+    {% block content %}
+    {% endblock content %}
+    
+</body>
+</html>

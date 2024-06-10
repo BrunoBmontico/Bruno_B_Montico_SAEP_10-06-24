@@ -1,0 +1,39 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+<!-- nome da pagina -->
+{% block nome_pag %}tela_professor{% endblock nome_pag %}
+
+<!-- texto de apresentação no header -->
+{% block txt_header %}
+Ola Prof. {{user.first_name}} {{user.last_name}}
+{% endblock txt_header %}
+
+<!-- botões do header -->
+{% block btn %}
+<a class="btn" href="{% url 'cadastro_turma' id=user.id %}">Criar Turma</a>
+<a class="btn" href="{% url 'logout' %}">Logout</a>
+{% endblock btn %}
+
+<!-- conteudo da pagina -->
+{% block content %}
+<div id="professor-conteiner">
+    <div id="content_page">
+        <header id="header-table">
+            <p>ID</p>
+            <p>Nome da Turma</p>
+        </header>
+        {% for turma in turmas_professor %}
+        <div class="content-table">
+            <p>{{ turma.id }}</p>
+            <p>{{ turma.Nome_Turma }}</p>
+            <div id="btn-action">
+                <a id="visualizar" href="{% url 'area_turma' id=turma.id %}" >Visualizar</a>
+                <a id="excluir" href="{% url 'Confirm' id_turma=turma.id %}">excluir</a>
+            </div>
+            
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock content %}

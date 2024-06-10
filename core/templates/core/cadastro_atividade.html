@@ -1,0 +1,19 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+<!-- nome da pagina -->
+{% block nome_pag %}cadastro atividade{% endblock nome_pag %}
+
+<!-- conteudo da pagina -->
+{% block content %}
+<div id="container">
+    <form id="content" action="{% url 'cadastrar_atividade' id_usuario=user.id id_turma=turma.id %}" method="POST">
+        {% csrf_token %}
+        <p id="txt-title">Criar Atividade</p>
+        <input type="text" name="nome_atividade" placeholder="Nome" class="input">
+
+        <button type="submit" id="submit">Criar</button>
+    </form>
+</div>
+
+{% endblock content %}

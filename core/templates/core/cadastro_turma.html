@@ -1,0 +1,18 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+<!-- nome da pagina -->
+{% block nome_pag %}cadastro turma{% endblock nome_pag %}
+
+<!-- conteudo da pagina -->
+{% block content %}
+<div id="container">
+    <form id="content" action="{% url 'cadastro_turma' id=user.id %}" method="POST">
+        {% csrf_token %}
+        <p id="txt-title">Criar Turma</p>
+        <input type="text" name="nome_turma" placeholder="Nome" class="input">
+
+        <button type="submit" id="submit">Criar</button>
+    </form>
+</div>
+{% endblock content %}
