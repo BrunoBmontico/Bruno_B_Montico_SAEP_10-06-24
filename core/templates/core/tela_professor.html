@@ -29,7 +29,7 @@ Ola Prof. {{user.first_name}} {{user.last_name}}
             <p>{{ turma.Nome_Turma }}</p>
             <div id="btn-action">
                 <a id="visualizar" href="{% url 'area_turma' id=turma.id %}" >Visualizar</a>
-                <a id="excluir" href="{% url 'Confirm' id_turma=turma.id %}">excluir</a>
+                <a id="excluir" href="{% url 'confirmar' id_turma=turma.id %}">excluir</a>
             </div>
             
         </div>

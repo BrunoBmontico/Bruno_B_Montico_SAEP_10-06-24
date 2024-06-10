@@ -65,7 +65,7 @@ def cadastro_turma(request, id):
             turma = Turma.objects.create(
                 nome_turma = nome_Turma,
                 id_professor = usuario,
-                First_Name = usuario.first_name,
+                nome_professor = usuario.first_name,
             )
             turma.save()
             return redirect(f'/tela_professor/{request.user.id}')

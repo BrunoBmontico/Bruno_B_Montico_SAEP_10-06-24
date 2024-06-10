@@ -1,0 +1,78 @@
+@import url('https://fonts.googleapis.com/css2?family=Allerta&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Allerta', sans-serif;
+    transition: .1s ease-in-out;
+}
+
+body{
+    height: 1008px;
+}
+
+#container{
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#content{
+    border: solid 1px #50497a;
+    border-radius: 10px;
+    box-shadow: 0px 0px 20px 0px #50497a;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 30px;
+    width: 300px;
+    height: 400px;
+}
+
+#txt-title{
+    color: #1a1729;
+    font-size: 20px;
+}
+
+.input{
+    border-radius: 10px;
+    border: solid 2px #5b518d;
+    height: 30px;
+    
+    padding-left: 10px;
+    outline: none;
+}
+
+.input:focus{
+    box-shadow: 0px 0px 20px 0px #5d45e0;
+    
+}
+
+#link{
+    color: #696191;
+    font-size: 13px;
+}
+
+#link:hover{
+    color: #2b00ff;
+}
+
+#submit{
+    width: 120px;
+    height: 40px;
+    font-size: 17px;
+    background-color: #51458d;
+    border: none;
+    border-radius: 10px;
+    color: white;
+    cursor: pointer;
+}
+
+#submit:hover{
+    background-color: #3a2c8d;
+    box-shadow: 0px 0px 20px 0px #5d45e0;
+}
